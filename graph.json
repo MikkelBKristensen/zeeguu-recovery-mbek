@@ -1,0 +1,2348 @@
+{
+  "nodes": [
+    {
+      "id": "__init__",
+      "label": "__init__",
+      "loc": 0,
+      "fan_in": 0,
+      "fan_out": 0,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "api",
+      "label": "api",
+      "loc": 223,
+      "fan_in": 1,
+      "fan_out": 9,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "api.app",
+      "label": "app",
+      "loc": 0,
+      "fan_in": 3,
+      "fan_out": 0,
+      "layer": 0,
+      "group": "other"
+    },
+    {
+      "id": "api.endpoints",
+      "label": "endpoints",
+      "loc": 9787,
+      "fan_in": 1,
+      "fan_out": 31,
+      "layer": 0,
+      "group": "api"
+    },
+    {
+      "id": "api.utils",
+      "label": "utils",
+      "loc": 303,
+      "fan_in": 3,
+      "fan_out": 3,
+      "layer": 0,
+      "group": "api"
+    },
+    {
+      "id": "cl",
+      "label": "cl",
+      "loc": 3,
+      "fan_in": 0,
+      "fan_out": 1,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "config",
+      "label": "config",
+      "loc": 51,
+      "fan_in": 5,
+      "fan_out": 0,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "config.loader",
+      "label": "loader",
+      "loc": 0,
+      "fan_in": 1,
+      "fan_out": 0,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "core",
+      "label": "core",
+      "loc": 185,
+      "fan_in": 13,
+      "fan_out": 1,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "core.account_management",
+      "label": "account_management",
+      "loc": 321,
+      "fan_in": 1,
+      "fan_out": 4,
+      "layer": 1,
+      "group": "user-management"
+    },
+    {
+      "id": "core.audio_lessons",
+      "label": "audio_lessons",
+      "loc": 1856,
+      "fan_in": 2,
+      "fan_out": 7,
+      "layer": 1,
+      "group": "audio-lessons"
+    },
+    {
+      "id": "core.badges",
+      "label": "badges",
+      "loc": 131,
+      "fan_in": 1,
+      "fan_out": 3,
+      "layer": 4,
+      "group": "user-management"
+    },
+    {
+      "id": "core.behavioral_modeling",
+      "label": "behavioral_modeling",
+      "loc": 32,
+      "fan_in": 2,
+      "fan_out": 0,
+      "layer": 1,
+      "group": "learning-system"
+    },
+    {
+      "id": "core.bookmark_operations",
+      "label": "bookmark_operations",
+      "loc": 220,
+      "fan_in": 2,
+      "fan_out": 4,
+      "layer": 1,
+      "group": "learning-system"
+    },
+    {
+      "id": "core.bookmark_quality",
+      "label": "bookmark_quality",
+      "loc": 105,
+      "fan_in": 2,
+      "fan_out": 1,
+      "layer": 1,
+      "group": "learning-system"
+    },
+    {
+      "id": "core.constants",
+      "label": "constants",
+      "loc": 0,
+      "fan_in": 5,
+      "fan_out": 0,
+      "layer": 4,
+      "group": "other"
+    },
+    {
+      "id": "core.content_cleaning",
+      "label": "content_cleaning",
+      "loc": 158,
+      "fan_in": 2,
+      "fan_out": 2,
+      "layer": 2,
+      "group": "content-pipeline"
+    },
+    {
+      "id": "core.content_quality",
+      "label": "content_quality",
+      "loc": 306,
+      "fan_in": 2,
+      "fan_out": 2,
+      "layer": 2,
+      "group": "content-pipeline"
+    },
+    {
+      "id": "core.content_recommender",
+      "label": "content_recommender",
+      "loc": 372,
+      "fan_in": 2,
+      "fan_out": 3,
+      "layer": 2,
+      "group": "content-pipeline"
+    },
+    {
+      "id": "core.content_retriever",
+      "label": "content_retriever",
+      "loc": 738,
+      "fan_in": 3,
+      "fan_out": 9,
+      "layer": 2,
+      "group": "content-pipeline"
+    },
+    {
+      "id": "core.crowd_translations",
+      "label": "crowd_translations",
+      "loc": 16,
+      "fan_in": 1,
+      "fan_out": 1,
+      "layer": 4,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.elastic",
+      "label": "elastic",
+      "loc": 593,
+      "fan_in": 5,
+      "fan_out": 2,
+      "layer": 2,
+      "group": "content-pipeline"
+    },
+    {
+      "id": "core.emailer",
+      "label": "emailer",
+      "loc": 247,
+      "fan_in": 5,
+      "fan_out": 3,
+      "layer": 4,
+      "group": "user-management"
+    },
+    {
+      "id": "core.events",
+      "label": "events",
+      "loc": 9,
+      "fan_in": 0,
+      "fan_out": 0,
+      "layer": 4,
+      "group": "other"
+    },
+    {
+      "id": "core.exercises",
+      "label": "exercises",
+      "loc": 23,
+      "fan_in": 1,
+      "fan_out": 3,
+      "layer": 1,
+      "group": "learning-system"
+    },
+    {
+      "id": "core.feed_handler",
+      "label": "feed_handler",
+      "loc": 195,
+      "fan_in": 1,
+      "fan_out": 2,
+      "layer": 2,
+      "group": "content-pipeline"
+    },
+    {
+      "id": "core.friends",
+      "label": "friends",
+      "loc": 59,
+      "fan_in": 2,
+      "fan_out": 3,
+      "layer": 4,
+      "group": "user-management"
+    },
+    {
+      "id": "core.language",
+      "label": "language",
+      "loc": 463,
+      "fan_in": 4,
+      "fan_out": 4,
+      "layer": 3,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.leaderboards",
+      "label": "leaderboards",
+      "loc": 201,
+      "fan_in": 1,
+      "fan_out": 1,
+      "layer": 4,
+      "group": "user-management"
+    },
+    {
+      "id": "core.llm_services",
+      "label": "llm_services",
+      "loc": 2503,
+      "fan_in": 6,
+      "fan_out": 6,
+      "layer": 3,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.ml_models",
+      "label": "ml_models",
+      "loc": 29,
+      "fan_in": 1,
+      "fan_out": 1,
+      "layer": 3,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.model",
+      "label": "model",
+      "loc": 11241,
+      "fan_in": 33,
+      "fan_out": 22,
+      "layer": 5,
+      "group": "data-layer"
+    },
+    {
+      "id": "core.mwe",
+      "label": "mwe",
+      "loc": 709,
+      "fan_in": 1,
+      "fan_out": 1,
+      "layer": 4,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.nlp_pipeline",
+      "label": "nlp_pipeline",
+      "loc": 805,
+      "fan_in": 1,
+      "fan_out": 0,
+      "layer": 3,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.reading_analysis",
+      "label": "reading_analysis",
+      "loc": 47,
+      "fan_in": 0,
+      "fan_out": 1,
+      "layer": 2,
+      "group": "learning-system"
+    },
+    {
+      "id": "core.semantic_search",
+      "label": "semantic_search",
+      "loc": 131,
+      "fan_in": 2,
+      "fan_out": 5,
+      "layer": 3,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.semantic_vector_api",
+      "label": "semantic_vector_api",
+      "loc": 44,
+      "fan_in": 2,
+      "fan_out": 1,
+      "layer": 3,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.sql",
+      "label": "sql",
+      "loc": 125,
+      "fan_in": 3,
+      "fan_out": 1,
+      "layer": 4,
+      "group": "other"
+    },
+    {
+      "id": "core.tokenization",
+      "label": "tokenization",
+      "loc": 722,
+      "fan_in": 6,
+      "fan_out": 3,
+      "layer": 3,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.translation_services",
+      "label": "translation_services",
+      "loc": 593,
+      "fan_in": 1,
+      "fan_out": 3,
+      "layer": 2,
+      "group": "language-processing"
+    },
+    {
+      "id": "core.user_activity_hooks",
+      "label": "user_activity_hooks",
+      "loc": 69,
+      "fan_in": 1,
+      "fan_out": 4,
+      "layer": 1,
+      "group": "user-management"
+    },
+    {
+      "id": "core.user_feature_toggles",
+      "label": "user_feature_toggles",
+      "loc": 0,
+      "fan_in": 2,
+      "fan_out": 0,
+      "layer": 4,
+      "group": "other"
+    },
+    {
+      "id": "core.user_statistics",
+      "label": "user_statistics",
+      "loc": 242,
+      "fan_in": 1,
+      "fan_out": 3,
+      "layer": 1,
+      "group": "user-management"
+    },
+    {
+      "id": "core.util",
+      "label": "util",
+      "loc": 175,
+      "fan_in": 8,
+      "fan_out": 6,
+      "layer": 4,
+      "group": "other"
+    },
+    {
+      "id": "core.utils",
+      "label": "utils",
+      "loc": 17,
+      "fan_in": 2,
+      "fan_out": 0,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "core.verbal_flashcards",
+      "label": "verbal_flashcards",
+      "loc": 562,
+      "fan_in": 1,
+      "fan_out": 2,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "core.word_filter",
+      "label": "word_filter",
+      "loc": 34,
+      "fan_in": 1,
+      "fan_out": 0,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "core.word_scheduling",
+      "label": "word_scheduling",
+      "loc": 357,
+      "fan_in": 7,
+      "fan_out": 3,
+      "layer": 1,
+      "group": "learning-system"
+    },
+    {
+      "id": "core.word_stats",
+      "label": "word_stats",
+      "loc": 7,
+      "fan_in": 1,
+      "fan_out": 0,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "core.youtube_api",
+      "label": "youtube_api",
+      "loc": 276,
+      "fan_in": 2,
+      "fan_out": 2,
+      "layer": 4,
+      "group": "content-pipeline"
+    },
+    {
+      "id": "logging",
+      "label": "logging",
+      "loc": 23,
+      "fan_in": 18,
+      "fan_out": 0,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "operations",
+      "label": "operations",
+      "loc": 0,
+      "fan_in": 0,
+      "fan_out": 0,
+      "layer": 2,
+      "group": "other"
+    },
+    {
+      "id": "operations.crawler",
+      "label": "crawler",
+      "loc": 587,
+      "fan_in": 1,
+      "fan_out": 6,
+      "layer": 0,
+      "group": "operations"
+    },
+    {
+      "id": "operations.monitoring",
+      "label": "monitoring",
+      "loc": 0,
+      "fan_in": 0,
+      "fan_out": 0,
+      "layer": 0,
+      "group": "other"
+    },
+    {
+      "id": "operations.report_generator",
+      "label": "report_generator",
+      "loc": 979,
+      "fan_in": 0,
+      "fan_out": 3,
+      "layer": 0,
+      "group": "operations"
+    }
+  ],
+  "links": [
+    {
+      "source": "api",
+      "target": "api.endpoints",
+      "weight": 1,
+      "files": [
+        "api/app.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api",
+      "target": "api.utils",
+      "weight": 1,
+      "files": [
+        "api/app.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api",
+      "target": "config",
+      "weight": 1,
+      "files": [
+        "api/app.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api",
+      "target": "config.loader",
+      "weight": 1,
+      "files": [
+        "api/app.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api",
+      "target": "core.badges",
+      "weight": 1,
+      "files": [
+        "api/app.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api",
+      "target": "core.friends",
+      "weight": 1,
+      "files": [
+        "api/app.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "api/app.py",
+        "api/custom_fmd_graphs.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api",
+      "target": "core.tokenization",
+      "weight": 1,
+      "files": [
+        "api/app.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "api/app.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "api",
+      "weight": 8,
+      "files": [
+        "api/endpoints/teacher_dashboard/article_management.py",
+        "api/endpoints/teacher_dashboard/cohorts.py",
+        "api/endpoints/teacher_dashboard/general.py",
+        "api/endpoints/teacher_dashboard/student.py",
+        "api/endpoints/teacher_dashboard/student_exercises.py",
+        "api/endpoints/teacher_dashboard/student_overviews.py",
+        "api/endpoints/teacher_dashboard/student_readings.py",
+        "api/endpoints/teacher_dashboard/student_words.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "api.utils",
+      "weight": 51,
+      "files": [
+        "api/endpoints/accounts.py",
+        "api/endpoints/activity_tracking.py",
+        "api/endpoints/article.py",
+        "api/endpoints/article_cefr_recompute.py",
+        "api/endpoints/article_simplification.py",
+        "api/endpoints/article_upload.py",
+        "api/endpoints/audio_lessons.py",
+        "api/endpoints/badges.py",
+        "api/endpoints/bookmarks_and_words.py",
+        "api/endpoints/browsing_sessions.py",
+        "api/endpoints/cefr_assessment.py",
+        "api/endpoints/crawl_stats.py",
+        "api/endpoints/daily_streak.py",
+        "api/endpoints/exercises.py",
+        "api/endpoints/exercise_sessions.py",
+        "api/endpoints/feature_toggles.py",
+        "api/endpoints/friends.py",
+        "api/endpoints/generated_examples.py",
+        "api/endpoints/leaderboards.py",
+        "api/endpoints/listening_sessions.py",
+        "api/endpoints/nlp.py",
+        "api/endpoints/own_texts.py",
+        "api/endpoints/reading_sessions.py",
+        "api/endpoints/search.py",
+        "api/endpoints/sessions.py",
+        "api/endpoints/session_history.py",
+        "api/endpoints/speech.py",
+        "api/endpoints/student.py",
+        "api/endpoints/system_languages.py",
+        "api/endpoints/topics.py",
+        "api/endpoints/translation.py",
+        "api/endpoints/user.py",
+        "api/endpoints/user_article.py",
+        "api/endpoints/user_articles.py",
+        "api/endpoints/user_languages.py",
+        "api/endpoints/user_notifications.py",
+        "api/endpoints/user_onboarding_message.py",
+        "api/endpoints/user_preferences.py",
+        "api/endpoints/user_statistics.py",
+        "api/endpoints/user_stats.py",
+        "api/endpoints/user_video.py",
+        "api/endpoints/user_watching_session.py",
+        "api/endpoints/verbal_flashcards.py",
+        "api/endpoints/teacher_dashboard/article_management.py",
+        "api/endpoints/teacher_dashboard/cohorts.py",
+        "api/endpoints/teacher_dashboard/general.py",
+        "api/endpoints/teacher_dashboard/student.py",
+        "api/endpoints/teacher_dashboard/student_exercises.py",
+        "api/endpoints/teacher_dashboard/student_overviews.py",
+        "api/endpoints/teacher_dashboard/student_readings.py",
+        "api/endpoints/teacher_dashboard/student_words.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "config",
+      "weight": 1,
+      "files": [
+        "api/endpoints/speech.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core",
+      "weight": 15,
+      "files": [
+        "api/endpoints/activity_tracking.py",
+        "api/endpoints/speech.py",
+        "api/endpoints/translation.py",
+        "api/endpoints/user.py",
+        "api/endpoints/user_languages.py",
+        "api/endpoints/user_preferences.py",
+        "api/endpoints/__init__.py",
+        "api/endpoints/teacher_dashboard/article_management.py",
+        "api/endpoints/teacher_dashboard/cohorts.py",
+        "api/endpoints/teacher_dashboard/general.py",
+        "api/endpoints/teacher_dashboard/student.py",
+        "api/endpoints/teacher_dashboard/student_exercises.py",
+        "api/endpoints/teacher_dashboard/student_overviews.py",
+        "api/endpoints/teacher_dashboard/student_readings.py",
+        "api/endpoints/teacher_dashboard/student_words.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.account_management",
+      "weight": 1,
+      "files": [
+        "api/endpoints/accounts.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.audio_lessons",
+      "weight": 2,
+      "files": [
+        "api/endpoints/audio_lessons.py",
+        "api/endpoints/verbal_flashcards.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.behavioral_modeling",
+      "weight": 1,
+      "files": [
+        "api/endpoints/activity_tracking.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.bookmark_operations",
+      "weight": 1,
+      "files": [
+        "api/endpoints/translation.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.bookmark_quality",
+      "weight": 1,
+      "files": [
+        "api/endpoints/bookmarks_and_words.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.constants",
+      "weight": 2,
+      "files": [
+        "api/endpoints/session_history.py",
+        "api/endpoints/user_stats.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.content_recommender",
+      "weight": 3,
+      "files": [
+        "api/endpoints/search.py",
+        "api/endpoints/user_articles.py",
+        "api/endpoints/user_notifications.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.content_retriever",
+      "weight": 4,
+      "files": [
+        "api/endpoints/article.py",
+        "api/endpoints/article_upload.py",
+        "api/endpoints/crawl_stats.py",
+        "api/endpoints/user_article.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.crowd_translations",
+      "weight": 1,
+      "files": [
+        "api/endpoints/translation.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.emailer",
+      "weight": 5,
+      "files": [
+        "api/endpoints/accounts.py",
+        "api/endpoints/activity_tracking.py",
+        "api/endpoints/exercise_sessions.py",
+        "api/endpoints/user.py",
+        "api/endpoints/teacher_dashboard/article_management.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.exercises",
+      "weight": 1,
+      "files": [
+        "api/endpoints/exercises.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.friends",
+      "weight": 2,
+      "files": [
+        "api/endpoints/friends.py",
+        "api/endpoints/user.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.language",
+      "weight": 4,
+      "files": [
+        "api/endpoints/article.py",
+        "api/endpoints/article_cefr_recompute.py",
+        "api/endpoints/article_simplification.py",
+        "api/endpoints/article_upload.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.leaderboards",
+      "weight": 1,
+      "files": [
+        "api/endpoints/leaderboards.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.llm_services",
+      "weight": 4,
+      "files": [
+        "api/endpoints/article.py",
+        "api/endpoints/article_cefr_recompute.py",
+        "api/endpoints/article_upload.py",
+        "api/endpoints/generated_examples.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.model",
+      "weight": 52,
+      "files": [
+        "api/endpoints/accounts.py",
+        "api/endpoints/activity_tracking.py",
+        "api/endpoints/article.py",
+        "api/endpoints/article_cefr_recompute.py",
+        "api/endpoints/article_simplification.py",
+        "api/endpoints/article_upload.py",
+        "api/endpoints/audio_lessons.py",
+        "api/endpoints/badges.py",
+        "api/endpoints/bookmarks_and_words.py",
+        "api/endpoints/cefr_assessment.py",
+        "api/endpoints/crawl_stats.py",
+        "api/endpoints/daily_streak.py",
+        "api/endpoints/exercises.py",
+        "api/endpoints/exercise_sessions.py",
+        "api/endpoints/feature_toggles.py",
+        "api/endpoints/friends.py",
+        "api/endpoints/generated_examples.py",
+        "api/endpoints/leaderboards.py",
+        "api/endpoints/nlp.py",
+        "api/endpoints/own_texts.py",
+        "api/endpoints/search.py",
+        "api/endpoints/sessions.py",
+        "api/endpoints/session_history.py",
+        "api/endpoints/speech.py",
+        "api/endpoints/student.py",
+        "api/endpoints/system_languages.py",
+        "api/endpoints/topics.py",
+        "api/endpoints/translation.py",
+        "api/endpoints/user.py",
+        "api/endpoints/user_article.py",
+        "api/endpoints/user_articles.py",
+        "api/endpoints/user_languages.py",
+        "api/endpoints/user_notifications.py",
+        "api/endpoints/user_onboarding_message.py",
+        "api/endpoints/user_statistics.py",
+        "api/endpoints/user_stats.py",
+        "api/endpoints/user_video.py",
+        "api/endpoints/user_watching_session.py",
+        "api/endpoints/verbal_flashcards.py",
+        "api/endpoints/__init__.py",
+        "api/endpoints/helpers/activity_sessions.py",
+        "api/endpoints/teacher_dashboard/article_management.py",
+        "api/endpoints/teacher_dashboard/cohorts.py",
+        "api/endpoints/teacher_dashboard/general.py",
+        "api/endpoints/teacher_dashboard/helpers.py",
+        "api/endpoints/teacher_dashboard/student.py",
+        "api/endpoints/teacher_dashboard/student_exercises.py",
+        "api/endpoints/teacher_dashboard/student_overviews.py",
+        "api/endpoints/teacher_dashboard/student_readings.py",
+        "api/endpoints/teacher_dashboard/student_words.py",
+        "api/endpoints/teacher_dashboard/_common_api_parameters.py",
+        "api/endpoints/teacher_dashboard/_permissions.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.nlp_pipeline",
+      "weight": 1,
+      "files": [
+        "api/endpoints/nlp.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.sql",
+      "weight": 5,
+      "files": [
+        "api/endpoints/exercise_sessions.py",
+        "api/endpoints/teacher_dashboard/helpers.py",
+        "api/endpoints/teacher_dashboard/student_exercises.py",
+        "api/endpoints/teacher_dashboard/student_words.py",
+        "api/endpoints/teacher_dashboard/_common_api_parameters.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.tokenization",
+      "weight": 3,
+      "files": [
+        "api/endpoints/bookmarks_and_words.py",
+        "api/endpoints/generated_examples.py",
+        "api/endpoints/nlp.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.translation_services",
+      "weight": 1,
+      "files": [
+        "api/endpoints/translation.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.user_activity_hooks",
+      "weight": 1,
+      "files": [
+        "api/endpoints/activity_tracking.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.user_feature_toggles",
+      "weight": 2,
+      "files": [
+        "api/endpoints/feature_toggles.py",
+        "api/endpoints/verbal_flashcards.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.user_statistics",
+      "weight": 5,
+      "files": [
+        "api/endpoints/user_statistics.py",
+        "api/endpoints/teacher_dashboard/helpers.py",
+        "api/endpoints/teacher_dashboard/student_exercises.py",
+        "api/endpoints/teacher_dashboard/student_overviews.py",
+        "api/endpoints/teacher_dashboard/student_readings.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.util",
+      "weight": 2,
+      "files": [
+        "api/endpoints/article_cefr_recompute.py",
+        "api/endpoints/daily_streak.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.verbal_flashcards",
+      "weight": 1,
+      "files": [
+        "api/endpoints/verbal_flashcards.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "core.word_scheduling",
+      "weight": 3,
+      "files": [
+        "api/endpoints/bookmarks_and_words.py",
+        "api/endpoints/exercises.py",
+        "api/endpoints/generated_examples.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.endpoints",
+      "target": "logging",
+      "weight": 16,
+      "files": [
+        "api/endpoints/accounts.py",
+        "api/endpoints/activity_tracking.py",
+        "api/endpoints/article.py",
+        "api/endpoints/article_cefr_recompute.py",
+        "api/endpoints/audio_lessons.py",
+        "api/endpoints/bookmarks_and_words.py",
+        "api/endpoints/exercises.py",
+        "api/endpoints/friends.py",
+        "api/endpoints/generated_examples.py",
+        "api/endpoints/own_texts.py",
+        "api/endpoints/search.py",
+        "api/endpoints/sessions.py",
+        "api/endpoints/topics.py",
+        "api/endpoints/translation.py",
+        "api/endpoints/user_article.py",
+        "api/endpoints/verbal_flashcards.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.utils",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "api/utils/route_wrappers.py",
+        "api/utils/session_helpers.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.utils",
+      "target": "core.utils",
+      "weight": 1,
+      "files": [
+        "api/utils/caching_decorator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "api.utils",
+      "target": "logging",
+      "weight": 3,
+      "files": [
+        "api/utils/background.py",
+        "api/utils/route_wrappers.py",
+        "api/utils/security_checks.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "cl",
+      "target": "api.app",
+      "weight": 1,
+      "files": [
+        "cl/__init__.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/user_feature_toggles.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.account_management",
+      "target": "core",
+      "weight": 2,
+      "files": [
+        "core/account_management/user_account_creation.py",
+        "core/account_management/user_account_deletion.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.account_management",
+      "target": "core.emailer",
+      "weight": 1,
+      "files": [
+        "core/account_management/user_account_creation.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.account_management",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/account_management/user_account_creation.py",
+        "core/account_management/user_account_deletion.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.account_management",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "core/account_management/user_account_creation.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.audio_lessons",
+      "target": "config",
+      "weight": 3,
+      "files": [
+        "core/audio_lessons/daily_lesson_generator.py",
+        "core/audio_lessons/lesson_builder.py",
+        "core/audio_lessons/voice_synthesizer.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.audio_lessons",
+      "target": "core",
+      "weight": 1,
+      "files": [
+        "core/audio_lessons/daily_lesson_generator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.audio_lessons",
+      "target": "core.emailer",
+      "weight": 1,
+      "files": [
+        "core/audio_lessons/daily_lesson_generator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.audio_lessons",
+      "target": "core.llm_services",
+      "weight": 2,
+      "files": [
+        "core/audio_lessons/script_generator.py",
+        "core/audio_lessons/suggestion_validator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.audio_lessons",
+      "target": "core.model",
+      "weight": 4,
+      "files": [
+        "core/audio_lessons/daily_lesson_generator.py",
+        "core/audio_lessons/lesson_builder.py",
+        "core/audio_lessons/script_generator.py",
+        "core/audio_lessons/word_selector.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.audio_lessons",
+      "target": "core.word_scheduling",
+      "weight": 2,
+      "files": [
+        "core/audio_lessons/daily_lesson_generator.py",
+        "core/audio_lessons/word_selector.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.audio_lessons",
+      "target": "logging",
+      "weight": 6,
+      "files": [
+        "core/audio_lessons/daily_lesson_generator.py",
+        "core/audio_lessons/lesson_builder.py",
+        "core/audio_lessons/script_generator.py",
+        "core/audio_lessons/suggestion_validator.py",
+        "core/audio_lessons/voice_synthesizer.py",
+        "core/audio_lessons/word_selector.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.badges",
+      "target": "core",
+      "weight": 1,
+      "files": [
+        "core/badges/listeners.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.badges",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/badges/badge_progress.py",
+        "core/badges/listeners.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.badges",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "core/badges/badge_progress.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.bookmark_operations",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/bookmark_operations/update_bookmark.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.bookmark_operations",
+      "target": "core.tokenization",
+      "weight": 1,
+      "files": [
+        "core/bookmark_operations/update_bookmark.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.bookmark_operations",
+      "target": "core.word_scheduling",
+      "weight": 1,
+      "files": [
+        "core/bookmark_operations/update_bookmark.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.bookmark_operations",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "core/bookmark_operations/update_bookmark.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.bookmark_quality",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/bookmark_quality/fit_for_study.py",
+        "core/bookmark_quality/negative_qualities.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_cleaning",
+      "target": "core",
+      "weight": 1,
+      "files": [
+        "core/content_cleaning/content_cleaner.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_cleaning",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/content_cleaning/content_cleaner.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_quality",
+      "target": "core.ml_models",
+      "weight": 1,
+      "files": [
+        "core/content_quality/quality_filter.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_quality",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/content_quality/quality_filter.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_recommender",
+      "target": "core.elastic",
+      "weight": 1,
+      "files": [
+        "core/content_recommender/elastic_recommender.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_recommender",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/content_recommender/elastic_recommender.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_recommender",
+      "target": "core.util",
+      "weight": 1,
+      "files": [
+        "core/content_recommender/elastic_recommender.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_retriever",
+      "target": "core",
+      "weight": 2,
+      "files": [
+        "core/content_retriever/article_downloader.py",
+        "core/content_retriever/video_dowloader.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_retriever",
+      "target": "core.content_cleaning",
+      "weight": 2,
+      "files": [
+        "core/content_retriever/article_downloader.py",
+        "core/content_retriever/__init__.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_retriever",
+      "target": "core.content_quality",
+      "weight": 1,
+      "files": [
+        "core/content_retriever/article_downloader.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_retriever",
+      "target": "core.elastic",
+      "weight": 1,
+      "files": [
+        "core/content_retriever/article_downloader.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_retriever",
+      "target": "core.llm_services",
+      "weight": 1,
+      "files": [
+        "core/content_retriever/article_downloader.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_retriever",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/content_retriever/article_downloader.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_retriever",
+      "target": "core.semantic_search",
+      "weight": 1,
+      "files": [
+        "core/content_retriever/article_downloader.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_retriever",
+      "target": "core.youtube_api",
+      "weight": 1,
+      "files": [
+        "core/content_retriever/video_dowloader.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.content_retriever",
+      "target": "logging",
+      "weight": 2,
+      "files": [
+        "core/content_retriever/article_downloader.py",
+        "core/content_retriever/parse_with_readability_server.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.crowd_translations",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/crowd_translations/__init__.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.elastic",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/elastic/elastic_query_builder.py",
+        "core/elastic/indexing.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.elastic",
+      "target": "core.semantic_vector_api",
+      "weight": 1,
+      "files": [
+        "core/elastic/indexing.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.emailer",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/emailer/user_activity.py",
+        "core/emailer/zeeguu_mailer.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.emailer",
+      "target": "core.sql",
+      "weight": 1,
+      "files": [
+        "core/emailer/user_activity.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.emailer",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "core/emailer/zeeguu_mailer.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.exercises",
+      "target": "core.word_filter",
+      "weight": 1,
+      "files": [
+        "core/exercises/similar_words.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.exercises",
+      "target": "core.word_scheduling",
+      "weight": 1,
+      "files": [
+        "core/exercises/similar_words.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.exercises",
+      "target": "core.word_stats",
+      "weight": 1,
+      "files": [
+        "core/exercises/similar_words.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.feed_handler",
+      "target": "core.util",
+      "weight": 1,
+      "files": [
+        "core/feed_handler/feed_handler.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.feed_handler",
+      "target": "logging",
+      "weight": 2,
+      "files": [
+        "core/feed_handler/newspaperfeed.py",
+        "core/feed_handler/rssfeed.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.friends",
+      "target": "core",
+      "weight": 1,
+      "files": [
+        "core/friends/listeners.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.friends",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/friends/friend_streak.py",
+        "core/friends/listeners.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.friends",
+      "target": "core.util",
+      "weight": 1,
+      "files": [
+        "core/friends/friend_streak.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.language",
+      "target": "core",
+      "weight": 4,
+      "files": [
+        "core/language/difficulty_estimator_strategy.py",
+        "core/language/strategies/default_difficulty_estimator.py",
+        "core/language/strategies/frequency_difficulty_estimator.py",
+        "core/language/strategies/word_rank_difficulty_estimator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.language",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/language/cefr_estimator.py",
+        "core/language/strategies/flesch_kincaid_difficulty_estimator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.language",
+      "target": "core.util",
+      "weight": 2,
+      "files": [
+        "core/language/strategies/flesch_kincaid_difficulty_estimator.py",
+        "core/language/strategies/frequency_difficulty_estimator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.language",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "core/language/ml_cefr_classifier.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.leaderboards",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/leaderboards/leaderboards.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.llm_services",
+      "target": "core.bookmark_operations",
+      "weight": 1,
+      "files": [
+        "core/llm_services/validation_service.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.llm_services",
+      "target": "core.elastic",
+      "weight": 1,
+      "files": [
+        "core/llm_services/simplification_and_classification.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.llm_services",
+      "target": "core.language",
+      "weight": 1,
+      "files": [
+        "core/llm_services/simplification_and_classification.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.llm_services",
+      "target": "core.model",
+      "weight": 5,
+      "files": [
+        "core/llm_services/simplification_and_classification.py",
+        "core/llm_services/translation_validator.py",
+        "core/llm_services/validation_service.py",
+        "core/llm_services/prompts/article_simplification.py",
+        "core/llm_services/prompts/grammar_correction.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.llm_services",
+      "target": "core.word_scheduling",
+      "weight": 1,
+      "files": [
+        "core/llm_services/validation_service.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.llm_services",
+      "target": "logging",
+      "weight": 8,
+      "files": [
+        "core/llm_services/anthropic_service.py",
+        "core/llm_services/deepseek_service.py",
+        "core/llm_services/grammar_correction_service.py",
+        "core/llm_services/llm_service.py",
+        "core/llm_services/simplification_and_classification.py",
+        "core/llm_services/simplification_service.py",
+        "core/llm_services/translation_validator.py",
+        "core/llm_services/validation_service.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.ml_models",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/ml_models/utils.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "api.utils",
+      "weight": 1,
+      "files": [
+        "core/model/meaning.py"
+      ],
+      "violation": true
+    },
+    {
+      "source": "core.model",
+      "target": "core",
+      "weight": 20,
+      "files": [
+        "core/model/article_difficulty_feedback.py",
+        "core/model/difficulty_lingo_rank.py",
+        "core/model/domain_name.py",
+        "core/model/exercise.py",
+        "core/model/exercise_outcome.py",
+        "core/model/exercise_source.py",
+        "core/model/feedback_component.py",
+        "core/model/friendship.py",
+        "core/model/search_filter.py",
+        "core/model/search_subscription.py",
+        "core/model/teacher.py",
+        "core/model/topic_filter.py",
+        "core/model/topic_subscription.py",
+        "core/model/unique_code.py",
+        "core/model/url.py",
+        "core/model/user.py",
+        "core/model/user_exercise_session.py",
+        "core/model/user_feedback.py",
+        "core/model/user_language.py",
+        "core/model/user_word.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.audio_lessons",
+      "weight": 1,
+      "files": [
+        "core/model/user.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.behavioral_modeling",
+      "weight": 1,
+      "files": [
+        "core/model/user_activitiy_data.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.bookmark_quality",
+      "weight": 1,
+      "files": [
+        "core/model/user_word.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.constants",
+      "weight": 4,
+      "files": [
+        "core/model/starred_article.py",
+        "core/model/user_activitiy_data.py",
+        "core/model/user_reading_session.py",
+        "core/model/user_watching_session.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.content_cleaning",
+      "weight": 1,
+      "files": [
+        "core/model/article.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.content_quality",
+      "weight": 1,
+      "files": [
+        "core/model/article.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.content_retriever",
+      "weight": 1,
+      "files": [
+        "core/model/article.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.elastic",
+      "weight": 2,
+      "files": [
+        "core/model/article.py",
+        "core/model/video.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.feed_handler",
+      "weight": 1,
+      "files": [
+        "core/model/feed.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.language",
+      "weight": 3,
+      "files": [
+        "core/model/article.py",
+        "core/model/user.py",
+        "core/model/video.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.llm_services",
+      "weight": 2,
+      "files": [
+        "core/model/article.py",
+        "core/model/meaning_frequency_classifier.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.mwe",
+      "weight": 5,
+      "files": [
+        "core/model/article.py",
+        "core/model/article_tokenization_cache.py",
+        "core/model/bookmark.py",
+        "core/model/bookmark_context.py",
+        "core/model/video.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.semantic_search",
+      "weight": 1,
+      "files": [
+        "core/model/video.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.sql",
+      "weight": 2,
+      "files": [
+        "core/model/user.py",
+        "core/model/user_exercise_session.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.tokenization",
+      "weight": 1,
+      "files": [
+        "core/model/article.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.user_feature_toggles",
+      "weight": 1,
+      "files": [
+        "core/model/user.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.util",
+      "weight": 18,
+      "files": [
+        "core/model/article.py",
+        "core/model/bookmark_context.py",
+        "core/model/cohort_article_map.py",
+        "core/model/new_text.py",
+        "core/model/source.py",
+        "core/model/source_text.py",
+        "core/model/text.py",
+        "core/model/url_keyword.py",
+        "core/model/user.py",
+        "core/model/user_activitiy_data.py",
+        "core/model/user_article.py",
+        "core/model/user_browsing_session.py",
+        "core/model/user_language.py",
+        "core/model/user_listening_session.py",
+        "core/model/user_reading_session.py",
+        "core/model/user_video.py",
+        "core/model/user_watching_session.py",
+        "core/model/video.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.word_scheduling",
+      "weight": 4,
+      "files": [
+        "core/model/user.py",
+        "core/model/user_preference.py",
+        "core/model/user_word.py",
+        "core/model/__init__.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "core.youtube_api",
+      "weight": 1,
+      "files": [
+        "core/model/video.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.model",
+      "target": "logging",
+      "weight": 14,
+      "files": [
+        "core/model/article.py",
+        "core/model/bookmark.py",
+        "core/model/example_sentence.py",
+        "core/model/feed.py",
+        "core/model/language.py",
+        "core/model/meaning.py",
+        "core/model/meaning_frequency_classifier.py",
+        "core/model/topic.py",
+        "core/model/user.py",
+        "core/model/user_activitiy_data.py",
+        "core/model/user_article.py",
+        "core/model/user_onboarding_message.py",
+        "core/model/user_preference.py",
+        "core/model/user_word.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.mwe",
+      "target": "core.tokenization",
+      "weight": 1,
+      "files": [
+        "core/mwe/__init__.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.reading_analysis",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/reading_analysis/macro_reading_session.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.semantic_search",
+      "target": "core.content_recommender",
+      "weight": 1,
+      "files": [
+        "core/semantic_search/elastic_semantic_search.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.semantic_search",
+      "target": "core.elastic",
+      "weight": 1,
+      "files": [
+        "core/semantic_search/elastic_semantic_search.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.semantic_search",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/semantic_search/elastic_semantic_search.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.semantic_search",
+      "target": "core.semantic_vector_api",
+      "weight": 1,
+      "files": [
+        "core/semantic_search/elastic_semantic_search.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.semantic_search",
+      "target": "core.util",
+      "weight": 1,
+      "files": [
+        "core/semantic_search/elastic_semantic_search.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.semantic_vector_api",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/semantic_vector_api/retrieve_embeddings.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.sql",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/sql/query_building.py",
+        "core/sql/learner/words.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.tokenization",
+      "target": "config",
+      "weight": 1,
+      "files": [
+        "core/tokenization/stanza_tokenizer.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.tokenization",
+      "target": "core.model",
+      "weight": 4,
+      "files": [
+        "core/tokenization/nltk_tokenizer.py",
+        "core/tokenization/stanza_client.py",
+        "core/tokenization/stanza_tokenizer.py",
+        "core/tokenization/zeeguu_tokenizer.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.tokenization",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "core/tokenization/word_position_finder.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.translation_services",
+      "target": "core.llm_services",
+      "weight": 1,
+      "files": [
+        "core/translation_services/translator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.translation_services",
+      "target": "core.utils",
+      "weight": 1,
+      "files": [
+        "core/translation_services/translator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.translation_services",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "core/translation_services/translator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.user_activity_hooks",
+      "target": "core.constants",
+      "weight": 1,
+      "files": [
+        "core/user_activity_hooks/article_interaction_hooks.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.user_activity_hooks",
+      "target": "core.emailer",
+      "weight": 1,
+      "files": [
+        "core/user_activity_hooks/article_interaction_hooks.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.user_activity_hooks",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "core/user_activity_hooks/article_interaction_hooks.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.user_activity_hooks",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "core/user_activity_hooks/article_interaction_hooks.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.user_statistics",
+      "target": "core",
+      "weight": 5,
+      "files": [
+        "core/user_statistics/activity.py",
+        "core/user_statistics/exercise_corectness.py",
+        "core/user_statistics/exercise_sessions.py",
+        "core/user_statistics/reading_sessions.py",
+        "core/user_statistics/student_overview.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.user_statistics",
+      "target": "core.constants",
+      "weight": 1,
+      "files": [
+        "core/user_statistics/activity.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.user_statistics",
+      "target": "core.model",
+      "weight": 4,
+      "files": [
+        "core/user_statistics/exercise_corectness.py",
+        "core/user_statistics/exercise_sessions.py",
+        "core/user_statistics/reading_sessions.py",
+        "core/user_statistics/student_overview.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.util",
+      "target": "core",
+      "weight": 1,
+      "files": [
+        "core/util/timer_logging_decorator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.util",
+      "target": "core.constants",
+      "weight": 1,
+      "files": [
+        "core/util/encoding.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.util",
+      "target": "core.language",
+      "weight": 1,
+      "files": [
+        "core/util/compute_fk_word_count.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.util",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/util/compute_fk_word_count.py",
+        "core/util/text.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.util",
+      "target": "core.tokenization",
+      "weight": 1,
+      "files": [
+        "core/util/compute_fk_word_count.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.util",
+      "target": "logging",
+      "weight": 1,
+      "files": [
+        "core/util/timer_logging_decorator.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.verbal_flashcards",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/verbal_flashcards/flashcard_selection.py",
+        "core/verbal_flashcards/submission.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.verbal_flashcards",
+      "target": "core.word_scheduling",
+      "weight": 1,
+      "files": [
+        "core/verbal_flashcards/flashcard_selection.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.word_scheduling",
+      "target": "core",
+      "weight": 1,
+      "files": [
+        "core/word_scheduling/basicSR/four_levels_per_word.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.word_scheduling",
+      "target": "core.llm_services",
+      "weight": 1,
+      "files": [
+        "core/word_scheduling/basicSR/four_levels_per_word.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.word_scheduling",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "core/word_scheduling/basicSR/basicSR.py",
+        "core/word_scheduling/basicSR/four_levels_per_word.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.youtube_api",
+      "target": "config",
+      "weight": 1,
+      "files": [
+        "core/youtube_api/youtube_api.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "core.youtube_api",
+      "target": "core.util",
+      "weight": 1,
+      "files": [
+        "core/youtube_api/youtube_api.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "operations.crawler",
+      "target": "api.app",
+      "weight": 3,
+      "files": [
+        "operations/crawler/article_crawler.py",
+        "operations/crawler/crawl.py",
+        "operations/crawler/video_crawler.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "operations.crawler",
+      "target": "core",
+      "weight": 2,
+      "files": [
+        "operations/crawler/crawl.py",
+        "operations/crawler/feed_retrieval.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "operations.crawler",
+      "target": "core.content_retriever",
+      "weight": 3,
+      "files": [
+        "operations/crawler/crawl.py",
+        "operations/crawler/feed_retrieval.py",
+        "operations/crawler/video_crawler.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "operations.crawler",
+      "target": "core.emailer",
+      "weight": 1,
+      "files": [
+        "operations/crawler/feed_retrieval.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "operations.crawler",
+      "target": "core.model",
+      "weight": 2,
+      "files": [
+        "operations/crawler/crawl.py",
+        "operations/crawler/feed_retrieval.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "operations.crawler",
+      "target": "logging",
+      "weight": 4,
+      "files": [
+        "operations/crawler/article_crawler.py",
+        "operations/crawler/crawl.py",
+        "operations/crawler/feed_retrieval.py",
+        "operations/crawler/video_crawler.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "operations.report_generator",
+      "target": "api.app",
+      "weight": 1,
+      "files": [
+        "operations/report_generator/generate_report.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "operations.report_generator",
+      "target": "core.model",
+      "weight": 1,
+      "files": [
+        "operations/report_generator/generate_report.py"
+      ],
+      "violation": false
+    },
+    {
+      "source": "operations.report_generator",
+      "target": "operations.crawler",
+      "weight": 1,
+      "files": [
+        "operations/report_generator/generate_report.py"
+      ],
+      "violation": false
+    }
+  ]
+}

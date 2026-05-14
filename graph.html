@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zeeguu-API: Architecture Module View</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", "Segoe UI", sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 14px 24px;
+      background: #161b27;
+      border-bottom: 1px solid #2d3748;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    header h1 { font-size: 15px; font-weight: 600; color: #f0f4ff; letter-spacing: 0.02em; }
+    header p  { font-size: 12px; color: #718096; }
+
+    /* ── Filter buttons ── */
+    .filters {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+      align-items: center;
+    }
+    .filters label { font-size: 11px; color: #718096; margin-right: 4px; }
+    .filter-btn {
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-weight: 500;
+    }
+    .filter-btn.active  { opacity: 1; }
+    .filter-btn.dimmed  { opacity: 0.35; }
+
+    /* ── Story mode ── */
+    #story-panel {
+      position: absolute;
+      top: 72px;
+      left: 20px;
+      width: 280px;
+      background: rgba(22,27,39,0.95);
+      border: 1px solid #2d3748;
+      border-radius: 10px;
+      padding: 16px;
+      z-index: 10;
+      display: none;
+    }
+    #story-panel h2 { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #a0aec0; text-transform: uppercase; letter-spacing: 0.05em; }
+    #story-title    { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #f0f4ff; }
+    #story-text     { font-size: 12px; line-height: 1.6; color: #a0aec0; }
+    #story-nav      { display: flex; gap: 8px; margin-top: 14px; }
+    #story-nav button {
+      flex: 1; padding: 6px; border-radius: 6px; border: 1px solid #2d3748;
+      background: #1e2535; color: #a0aec0; cursor: pointer; font-size: 12px;
+      transition: background 0.15s;
+    }
+    #story-nav button:hover { background: #2d3748; }
+
+    /* ── Tooltip ── */
+    #tooltip {
+      position: absolute;
+      background: rgba(15,17,23,0.97);
+      border: 1px solid #2d3748;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 12px;
+      pointer-events: none;
+      display: none;
+      max-width: 320px;
+      z-index: 20;
+      line-height: 1.5;
+    }
+    #tooltip .tt-title   { font-weight: 700; font-size: 13px; margin-bottom: 6px; color: #f0f4ff; }
+    #tooltip .tt-metric  { color: #718096; }
+    #tooltip .tt-metric span { color: #e2e8f0; font-weight: 500; }
+    #tooltip .tt-files   { margin-top: 8px; padding-top: 8px; border-top: 1px solid #2d3748; }
+    #tooltip .tt-files-title { color: #718096; font-size: 11px; margin-bottom: 4px; }
+    #tooltip .tt-file    { color: #7fb3f5; font-size: 11px; font-family: monospace; }
+    #tooltip .tt-violation { color: #fc8181; font-weight: 600; margin-top: 6px; }
+
+    /* ── Legend ── */
+    #legend {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(22,27,39,0.95);
+      border: 1px solid #2d3748;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 11px;
+      z-index: 10;
+    }
+    #legend h3 { font-size: 10px; color: #718096; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; color: #a0aec0; }
+    .legend-dot  { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .legend-line { width: 24px; height: 2px; flex-shrink: 0; }
+
+    /* ── Layer labels ── */
+    .layer-label { font-size: 14px; fill: #4a5568; font-style: italic; }
+
+    /* ── SVG ── */
+    svg { flex: 1; }
+    .node circle { stroke-width: 1.5px; cursor: pointer; transition: opacity 0.2s; }
+    .node text   { pointer-events: none; fill: #e2e8f0; font-size: 13px; font-family: monospace; }
+    .link        { fill: none; transition: opacity 0.2s; }
+
+    .dimmed-node circle { opacity: 0.08; }
+    .dimmed-node text   { opacity: 0.08; }
+    .dimmed-link        { opacity: 0.04; }
+    .highlighted-link   { opacity: 1 !important; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Zeeguu-API: Module View</h1>
+    <p>55 subpackages · 169 dependency edges</p>
+  </div>
+  <div class="filters">
+    <label>Show</label>
+    <button class="filter-btn active" data-group="all"              style="border-color:#4a5568;background:#1e2535;color:#a0aec0">All</button>
+    <button class="filter-btn active" data-group="api"             style="border-color:#4299e1;background:#1a2744;color:#7fb3f5">API</button>
+    <button class="filter-btn active" data-group="learning-system" style="border-color:#48bb78;background:#1a2e22;color:#68d391">Learning</button>
+    <button class="filter-btn active" data-group="content-pipeline"style="border-color:#ed8936;background:#2d1f0e;color:#f6ad55">Content</button>
+    <button class="filter-btn active" data-group="language-processing" style="border-color:#9f7aea;background:#231d38;color:#b794f4">Language</button>
+    <button class="filter-btn active" data-group="user-management" style="border-color:#f687b3;background:#2d1525;color:#f687b3">Users</button>
+    <button class="filter-btn active" data-group="audio-lessons"   style="border-color:#fbd38d;background:#2d2210;color:#fbd38d">Audio</button>
+    <button class="filter-btn active" data-group="data-layer"        style="border-color:#fc8181;background:#2d1515;color:#fc8181">Data Layer</button>
+    <button class="filter-btn active" data-group="operations"      style="border-color:#76e4f7;background:#0d2030;color:#76e4f7">Crawler</button>
+  </div>
+  <button id="story-toggle" style="padding:7px 18px;border-radius:6px;border:1px solid #4299e1;background:#1a3a5c;color:#90cdf4;cursor:pointer;font-size:12px;font-weight:600;margin-left:12px;letter-spacing:0.03em;box-shadow:0 0 8px rgba(66,153,225,0.25)">
+    ✦ Guided Analysis
+  </button>
+</header>
+
+<div id="story-panel">
+  <h2>Guided Analysis</h2>
+  <div id="story-title"></div>
+  <div id="story-text"></div>
+  <div id="story-nav">
+    <button id="story-prev">← Prev</button>
+    <button id="story-next">Next →</button>
+  </div>
+</div>
+
+<div id="tooltip"></div>
+
+<div id="legend">
+  <h3>Encoding</h3>
+  <div class="legend-item"><div class="legend-dot" style="background:#7fb3f5"></div> API layer</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#68d391"></div> Learning system</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f6ad55"></div> Content pipeline</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#b794f4"></div> Language processing</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f687b3"></div> User management</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#fbd38d"></div> Audio lessons</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#fc8181"></div> Data hub (core.model)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#76e4f7"></div> Background crawler</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#718096"></div> Other / utility</div>
+  <div style="margin-top:8px;padding-top:8px;border-top:1px solid #2d3748">
+  <div class="legend-item"><div class="legend-line" style="background:#555"></div> Dependency edge</div>
+  <div class="legend-item"><div class="legend-line" style="background:#fc8181"></div> Layer violation</div>
+  <div style="margin-top:4px;color:#718096">Node size ∝ lines of code</div>
+  </div>
+</div>
+
+<svg id="viz"></svg>
+
+<script>
+// ── Colour palette ─────────────────────────────────────────────────────────
+const GROUP_COLOR = {
+  "api":                "#7fb3f5",
+  "learning-system":    "#68d391",
+  "content-pipeline":   "#f6ad55",
+  "language-processing":"#b794f4",
+  "user-management":    "#f687b3",
+  "audio-lessons":      "#fbd38d",
+  "data-layer":           "#fc8181",
+  "operations":         "#76e4f7",
+  "other":              "#718096",
+};
+
+// Layer y-positions (fraction of height, 0=top)
+const LAYER_Y_FRAC = { 0: 0.08, 1: 0.28, 2: 0.46, 3: 0.63, 4: 0.78, 5: 0.92 };
+const LAYER_LABELS = {
+  0: "HTTP layer & background processes",
+  1: "Learning system  ·  User management",
+  2: "Content pipeline",
+  3: "Language processing",
+  4: "Shared utilities",
+  5: "Data hub  ·  core.model",
+};
+
+// ── Story acts ────────────────────────────────────────────────────────────
+const STORY = [
+  {
+    title: "Act 1: The intended design",
+    text:  "Zeeguu is a two-layer system, as described in <em>archlens.json</em>, a config file the developers use to group packages into named subsystems. The <strong>api</strong> layer (blue, top) is a thin HTTP adapter: it receives requests and delegates to <strong>core</strong>. The <strong>core</strong> contains all domain logic, split into subsystems. In the intended architecture, dependencies flow strictly downward. Any upward edge is a divergence from that intent.",
+    highlight: null,
+    dimGroups: [],
+  },
+  {
+    title: "Act 2: The data layer",
+    text:  "<strong>core.model</strong> (red, bottom) defines all SQLAlchemy ORM entities (User, Article, Bookmark, and so on). Fan-in = 32: almost every subsystem imports from it. That is expected. What is surprising is the fan-out of 22: <strong>core.model</strong> also calls back into subsystems like <em>audio_lessons</em>, <em>llm_services</em>, and <em>content_retriever</em>. SQLAlchemy's hybrid property pattern makes this easy to do incrementally, which may explain how it accumulated. Whether it is intentional is something only the developers can confirm.",
+    highlight: "core.model",
+    dimGroups: [],
+  },
+  {
+    title: "Act 3: The layer violation",
+    text:  "One divergence stands out: <strong>core.model → api.utils</strong>. This means the domain layer depends on the HTTP adapter, which inverts the intended direction. In the intended architecture, <strong>core</strong> has no dependency on <strong>api</strong>. The red dashed edge is this violation. A likely fix would be to move whatever <em>core.model</em> uses from <em>api.utils</em> into <em>core.util</em>, which both layers already depend on.",
+    highlight: "core.model",
+    dimGroups: [],
+    showViolation: true,
+  },
+  {
+    title: "Act 4: LLM services reach beyond NLP",
+    text:  "The hypothetical view places <strong>core.llm_services</strong> in the language-processing group, expected to depend only on the data layer. In practice it also reaches into the content pipeline (<em>core.elastic</em>, <em>core.content_recommender</em>) and the learning system (<em>core.bookmark_operations</em>, <em>core.word_scheduling</em>). This suggests the LLM subsystem may have taken on an orchestration role that goes well beyond NLP — though again, a developer conversation would be needed to say whether that was deliberate.",
+    highlight: "core.llm_services",
+    dimGroups: [],
+  },
+];
+
+let storyStep = 0;
+let activeGroups = new Set(Object.keys(GROUP_COLOR));
+let selectedNode = null;
+
+// ── Load data & render ────────────────────────────────────────────────────
+d3.json("graph.json").then(rawData => {
+  // ── Noise filter ──────────────────────────────────────────────────────────
+  // Remove nodes that are not coherent architectural subpackages:
+  // bare package roots (core, api, operations), cross-cutting infrastructure
+  // (logging, config), file-level artifacts (__init__, cl), and minor
+  // utilities too small to be architecturally significant.
+  const HIDE_NODES = new Set([
+    "logging", "core", "api", "config", "config.loader",
+    "core.constants", "core.sql", "core.utils", "core.user_feature_toggles",
+    "core.word_filter", "core.word_stats", "core.events",
+    "api.app", "cl", "__init__", "operations", "operations.monitoring",
+  ]);
+  const data = {
+    nodes: rawData.nodes.filter(n => !HIDE_NODES.has(n.id)),
+    links: rawData.links.filter(l =>
+      !HIDE_NODES.has(l.source) && !HIDE_NODES.has(l.target) &&
+      !HIDE_NODES.has(l.source?.id) && !HIDE_NODES.has(l.target?.id)
+    ),
+  };
+
+  const svg = d3.select("#viz");
+  const W = svg.node().clientWidth;
+  const H = svg.node().clientHeight;
+
+  // Node radius: proportional to LOC
+  const maxLoc = d3.max(data.nodes, d => d.loc) || 1;
+  const rScale = d3.scaleSqrt().domain([0, maxLoc]).range([6, 40]);
+
+  // Edge width: proportional to coupling weight
+  const maxW = d3.max(data.links, d => d.weight) || 1;
+  const wScale = d3.scaleLinear().domain([1, maxW]).range([0.8, 4]);
+
+  // ── Swimlane bands ──────────────────────────────────────────────────────────
+  // Bands are FIXED SVG elements (not inside the zoom group) so they always
+  // cover the full viewport width regardless of pan/zoom. On each zoom event
+  // their y/height are recomputed from transform.applyY(), same technique used
+  // for the floating labels.
+  //
+  // Layer centers (LAYER_Y_FRAC) are where forceY pins nodes.
+  // Band boundaries are midpoints between consecutive centers, so each band
+  // wraps exactly one layer's nodes. The label sits at the band centre — not
+  // on the boundary line — which makes layer membership unambiguous.
+  const layerOrder = [0, 1, 2, 3, 4, 5];
+  const centerFracs = layerOrder.map(l => LAYER_Y_FRAC[l]);
+
+  // Build boundary array: 0.0 → mid(0,1) → mid(1,2) → … → 1.0
+  const boundaryFracs = [0];
+  for (let i = 0; i < centerFracs.length - 1; i++) {
+    boundaryFracs.push((centerFracs[i] + centerFracs[i + 1]) / 2);
+  }
+  boundaryFracs.push(1.0);
+
+  // Per-layer band descriptors
+  const BANDS = layerOrder.map(l => ({
+    layer:      l,
+    fromFrac:   boundaryFracs[l],
+    toFrac:     boundaryFracs[l + 1],
+    centerFrac: (boundaryFracs[l] + boundaryFracs[l + 1]) / 2,
+  }));
+
+  // Alternating subtle fills — just enough to distinguish adjacent bands
+  const BAND_FILL = ["#12181f", "#0d1219", "#12181f", "#0d1219", "#12181f", "#0d1219"];
+
+  const bandG = svg.append("g").attr("class", "bands").attr("pointer-events", "none");
+  const bandRects = {};
+  BANDS.forEach(b => {
+    bandRects[b.layer] = bandG.append("rect")
+      .attr("x", 0).attr("width", W)
+      .attr("y", b.fromFrac * H)
+      .attr("height", (b.toFrac - b.fromFrac) * H)
+      .attr("fill", BAND_FILL[b.layer]);
+  });
+
+  // Thin dashed dividers at the band boundaries (fixed overlay, not zoom group)
+  const dividerG = svg.append("g").attr("class", "dividers").attr("pointer-events", "none");
+  const dividerEls = {};
+  for (let i = 1; i < boundaryFracs.length - 1; i++) {
+    dividerEls[i] = dividerG.append("line")
+      .attr("x1", 0).attr("x2", W)
+      .attr("y1", boundaryFracs[i] * H).attr("y2", boundaryFracs[i] * H)
+      .attr("stroke", "#1e2a3a").attr("stroke-width", 1).attr("stroke-dasharray", "4,4");
+  }
+
+  // Fixed label overlay — labels sit at the CENTRE of their band so they
+  // clearly belong to the band rather than to a boundary line.
+  const labelG = svg.append("g").attr("class", "layer-labels-fixed")
+    .attr("pointer-events", "none");
+  const labelEls = {};
+  BANDS.forEach(b => {
+    labelEls[b.layer] = labelG.append("text")
+      .attr("class", "layer-label")
+      .attr("x", 28).attr("y", b.centerFrac * H + 4)
+      .text(LAYER_LABELS[b.layer]);
+  });
+
+  // ── Two-layer bracket (left margin) ──────────────────────────────────────────
+  // Zeeguu is a two-layer system: api (top) and core (bottom). The 6 swimlanes
+  // are a presentation subdivision — all green nodes are "core". This bracket
+  // makes the true architectural boundary visible alongside the swimlane detail.
+  const BRKT_X = 0, BRKT_W = 20;
+  const TWO_LAYERS = [
+    { label: "API",  color: "#7fbfff", from: 0, to: 1 },
+    { label: "CORE", color: "#90ee90", from: 1, to: boundaryFracs.length - 1 },
+  ];
+  const bracketG = svg.append("g").attr("class", "brackets").attr("pointer-events", "none");
+  const bracketEls = TWO_LAYERS.map(spec => {
+    const yFrom = boundaryFracs[spec.from] * H;
+    const yTo   = boundaryFracs[spec.to]   * H;
+    const yMid  = (yFrom + yTo) / 2;
+    const cx    = BRKT_X + BRKT_W / 2;
+    const bar = bracketG.append("rect")
+      .attr("x", BRKT_X).attr("width", BRKT_W)
+      .attr("y", yFrom).attr("height", yTo - yFrom)
+      .attr("fill", spec.color).attr("opacity", 0.45).attr("rx", 2);
+    const lbl = bracketG.append("text")
+      .attr("x", cx).attr("y", yMid)
+      .attr("text-anchor", "middle").attr("dominant-baseline", "middle")
+      .attr("transform", `rotate(-90,${cx},${yMid})`)
+      .attr("fill", spec.color).attr("font-size", "13px")
+      .attr("font-family", "monospace").attr("font-weight", "700")
+      .attr("letter-spacing", "0.12em").attr("opacity", 0.85)
+      .text(spec.label);
+    return { spec, bar, lbl };
+  });
+
+  // ── Force simulation ──
+  // The key design: forceY is STRONG and targets each node's layer y-position.
+  // This pins the architectural layer while forceX and forceManyBody let nodes
+  // find their natural horizontal positions within each layer.
+  const sim = d3.forceSimulation(data.nodes)
+    .force("link",   d3.forceLink(data.links).id(d => d.id).distance(220).strength(0.06))
+    .force("charge", d3.forceManyBody().strength(-1200))
+    .force("x",      d3.forceX(W / 2).strength(0.05))
+    .force("y",      d3.forceY(d => LAYER_Y_FRAC[d.layer] * H).strength(2.5))
+    .force("collide",d3.forceCollide(d => rScale(d.loc) + 48));
+
+  // ── Edges ──
+  const linkG = svg.append("g").attr("class", "links");
+  const link = linkG.selectAll("path")
+    .data(data.links)
+    .join("path")
+      .attr("class", "link")
+      .attr("stroke", d => d.violation ? "#fc8181" : "#3a4a5c")
+      .attr("stroke-width", d => wScale(d.weight))
+      .attr("stroke-dasharray", d => d.violation ? "5,3" : null)
+      .attr("marker-end", d => d.violation ? "url(#arrow-violation)" : "url(#arrow)");
+
+  // Arrow markers
+  const defs = svg.append("defs");
+  [["arrow","#3a4a5c"],["arrow-violation","#fc8181"]].forEach(([id, color]) => {
+    defs.append("marker")
+      .attr("id", id).attr("viewBox","0 -4 8 8")
+      .attr("refX", 8).attr("refY", 0)
+      .attr("markerWidth", 5).attr("markerHeight", 5)
+      .attr("orient","auto")
+      .append("path").attr("d","M0,-4L8,0L0,4").attr("fill", color);
+  });
+
+  // ── Nodes ──
+  const nodeG = svg.append("g").attr("class", "nodes");
+  const node = nodeG.selectAll("g")
+    .data(data.nodes)
+    .join("g")
+      .attr("class", "node")
+      .call(d3.drag()
+        .on("start", (e,d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+        .on("drag",  (e,d) => { d.fx=e.x; d.fy=e.y; })
+        .on("end",   (e,d) => { if (!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; })
+      )
+      .on("click",     onNodeClick)
+      .on("mouseover", onNodeHover)
+      .on("mouseout",  onNodeOut);
+
+  node.append("circle")
+    .attr("r",    d => rScale(d.loc))
+    .attr("fill", d => GROUP_COLOR[d.group] || "#718096")
+    .attr("fill-opacity", 0.85)
+    .attr("stroke", d => d3.color(GROUP_COLOR[d.group] || "#718096").brighter(0.8));
+
+  node.append("text")
+    .attr("dy", d => rScale(d.loc) + 11)
+    .attr("text-anchor", "middle")
+    .text(d => d.label);
+
+  // ── Simulation tick ──
+  function linkPath(d) {
+    const dx = d.target.x - d.source.x;
+    const dy = d.target.y - d.source.y;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < 1) return "";
+    const ux = dx / dist, uy = dy / dist;
+    // Start from source node edge, end at target node edge
+    const sx = d.source.x + ux * rScale(d.source.loc);
+    const sy = d.source.y + uy * rScale(d.source.loc);
+    const tx = d.target.x - ux * rScale(d.target.loc);
+    const ty = d.target.y - uy * rScale(d.target.loc);
+    const dr = dist * 1.4;
+    return `M${sx},${sy}A${dr},${dr} 0 0,1 ${tx},${ty}`;
+  }
+
+  sim.on("tick", () => {
+    link.attr("d", linkPath);
+    node.attr("transform", d => `translate(${d.x},${d.y})`);
+  });
+
+  // ── Zoom & pan ──
+  svg.call(d3.zoom()
+    .scaleExtent([0.3, 4])
+    .on("zoom", e => {
+      linkG.attr("transform", e.transform);
+      nodeG.attr("transform", e.transform);
+      // Bands and dividers are fixed SVG — update y/height via transform.applyY()
+      BANDS.forEach(b => {
+        const yFrom = e.transform.applyY(b.fromFrac * H);
+        const yTo   = e.transform.applyY(b.toFrac   * H);
+        bandRects[b.layer]
+          .attr("y", yFrom)
+          .attr("height", Math.max(0, yTo - yFrom));
+      });
+      for (let i = 1; i < boundaryFracs.length - 1; i++) {
+        const y = e.transform.applyY(boundaryFracs[i] * H);
+        dividerEls[i].attr("y1", y).attr("y2", y);
+      }
+      // Labels track the centre of their band
+      BANDS.forEach(b => {
+        const y = e.transform.applyY(b.centerFrac * H);
+        labelEls[b.layer].attr("y", y + 4);
+      });
+      // Two-layer brackets track their zone boundaries
+      bracketEls.forEach(({ spec, bar, lbl }) => {
+        const yFrom = e.transform.applyY(boundaryFracs[spec.from] * H);
+        const yTo   = e.transform.applyY(boundaryFracs[spec.to]   * H);
+        const yMid  = (yFrom + yTo) / 2;
+        const cx    = BRKT_X + BRKT_W / 2;
+        bar.attr("y", yFrom).attr("height", Math.max(0, yTo - yFrom));
+        lbl.attr("y", yMid).attr("transform", `rotate(-90,${cx},${yMid})`);
+      });
+    })
+  );
+
+  // ── Filter buttons ──
+  d3.selectAll(".filter-btn[data-group]").on("click", function() {
+    const g = this.dataset.group;
+    if (g === "all") {
+      const allOn = activeGroups.size === Object.keys(GROUP_COLOR).length;
+      if (allOn) { activeGroups.clear(); }
+      else        { activeGroups = new Set(Object.keys(GROUP_COLOR)); }
+    } else {
+      if (activeGroups.has(g)) activeGroups.delete(g);
+      else                      activeGroups.add(g);
+    }
+    applyFilters();
+    updateFilterButtons();
+  });
+
+  function applyFilters() {
+    node.classed("dimmed-node", d => !activeGroups.has(d.group));
+    link.classed("dimmed-link", d => {
+      const sNode = data.nodes.find(n => n.id === (d.source.id || d.source));
+      const tNode = data.nodes.find(n => n.id === (d.target.id || d.target));
+      return !activeGroups.has(sNode?.group) || !activeGroups.has(tNode?.group);
+    });
+  }
+
+  function updateFilterButtons() {
+    d3.selectAll(".filter-btn[data-group]").each(function() {
+      const g = this.dataset.group;
+      if (g === "all") return;
+      this.classList.toggle("dimmed", !activeGroups.has(g));
+    });
+  }
+
+  // ── Node click — highlight neighbourhood ──
+  function onNodeClick(e, d) {
+    e.stopPropagation();
+    if (selectedNode === d.id) {
+      // Deselect
+      selectedNode = null;
+      node.classed("dimmed-node", false);
+      link.classed("dimmed-link", false).classed("highlighted-link", false);
+      applyFilters();
+      return;
+    }
+    selectedNode = d.id;
+    const connectedIds = new Set([d.id]);
+    const connectedLinks = new Set();
+    data.links.forEach((l, i) => {
+      const sid = l.source.id || l.source;
+      const tid = l.target.id || l.target;
+      if (sid === d.id || tid === d.id) {
+        connectedIds.add(sid);
+        connectedIds.add(tid);
+        connectedLinks.add(i);
+      }
+    });
+    node.classed("dimmed-node", n => !connectedIds.has(n.id));
+    link.classed("dimmed-link",       (l, i) => !connectedLinks.has(i))
+        .classed("highlighted-link",  (l, i) =>  connectedLinks.has(i));
+  }
+
+  svg.on("click", () => {
+    selectedNode = null;
+    node.classed("dimmed-node", false);
+    link.classed("dimmed-link", false).classed("highlighted-link", false);
+    applyFilters();
+  });
+
+  // ── Tooltip on hover ──
+  const tt = d3.select("#tooltip");
+
+  function onNodeHover(e, d) {
+    let html = `<div class="tt-title">${d.id}</div>`;
+    html += `<div class="tt-metric">LOC <span>${d.loc.toLocaleString()}</span></div>`;
+    html += `<div class="tt-metric">Fan-in <span>${d.fan_in}</span> &nbsp;·&nbsp; Fan-out <span>${d.fan_out}</span></div>`;
+    html += `<div class="tt-metric">Group <span>${d.group}</span></div>`;
+    tt.html(html).style("display","block");
+    moveTooltip(e);
+  }
+
+  function onEdgeHover(e, d) {
+    const sid = d.source.id || d.source;
+    const tid = d.target.id || d.target;
+    let html = `<div class="tt-title">${sid} → ${tid}</div>`;
+    html += `<div class="tt-metric">Coupling weight <span>${d.weight} file(s)</span></div>`;
+    if (d.violation) html += `<div class="tt-violation">⚠ Layer violation: lower layer imports from upper layer</div>`;
+    if (d.files && d.files.length) {
+      html += `<div class="tt-files"><div class="tt-files-title">Source files (traceability):</div>`;
+      d.files.slice(0,8).forEach(f => { html += `<div class="tt-file">${f}</div>`; });
+      if (d.files.length > 8) html += `<div class="tt-file">… and ${d.files.length - 8} more</div>`;
+      html += `</div>`;
+    }
+    tt.html(html).style("display","block");
+    moveTooltip(e);
+  }
+
+  function onNodeOut()  { tt.style("display","none"); }
+
+  function moveTooltip(e) {
+    const x = e.pageX + 14, y = e.pageY - 10;
+    tt.style("left", Math.min(x, window.innerWidth - 340) + "px")
+      .style("top",  Math.min(y, window.innerHeight - 200) + "px");
+  }
+
+  link.on("mouseover", onEdgeHover).on("mousemove", moveTooltip).on("mouseout", onNodeOut);
+
+  // ── Story mode ──
+  const panel = document.getElementById("story-panel");
+  const titleEl = document.getElementById("story-title");
+  const textEl  = document.getElementById("story-text");
+
+  function renderStoryStep(step) {
+    const act = STORY[step];
+    titleEl.textContent = act.title;
+    textEl.innerHTML = act.text;
+    document.getElementById("story-next").textContent =
+      step === STORY.length - 1 ? "Close ✕" : "Next →";
+
+    // Reset
+    node.classed("dimmed-node", false);
+    link.classed("dimmed-link",false).classed("highlighted-link",false)
+        .attr("stroke", d => d.violation ? "#fc8181" : "#3a4a5c");
+
+    if (act.highlight) {
+      const connectedIds = new Set([act.highlight]);
+      const connectedLinks = new Set();
+      data.links.forEach((l, i) => {
+        const sid = l.source.id || l.source;
+        const tid = l.target.id || l.target;
+        if (sid === act.highlight || tid === act.highlight) {
+          connectedIds.add(sid); connectedIds.add(tid);
+          connectedLinks.add(i);
+        }
+      });
+      node.classed("dimmed-node", n => !connectedIds.has(n.id));
+      link.classed("dimmed-link",      (l, i) => !connectedLinks.has(i))
+          .classed("highlighted-link", (l, i) =>  connectedLinks.has(i));
+    }
+
+    if (act.showViolation) {
+      link.attr("stroke", d => d.violation ? "#fc8181" : "#3a4a5c")
+          .attr("stroke-width", d => d.violation ? 3 : wScale(d.weight));
+    }
+  }
+
+  document.getElementById("story-toggle").addEventListener("click", () => {
+    const open = panel.style.display === "block";
+    panel.style.display = open ? "none" : "block";
+    if (!open) renderStoryStep(storyStep);
+  });
+
+  document.getElementById("story-prev").addEventListener("click", () => {
+    storyStep = Math.max(0, storyStep - 1);
+    renderStoryStep(storyStep);
+  });
+
+  document.getElementById("story-next").addEventListener("click", () => {
+    if (storyStep === STORY.length - 1) {
+      // Last step — close panel and reset to clean state
+      panel.style.display = "none";
+      storyStep = 0;
+      node.classed("dimmed-node", false);
+      link.classed("dimmed-link", false)
+          .classed("highlighted-link", false)
+          .attr("stroke", d => d.violation ? "#fc8181" : "#3a4a5c")
+          .attr("stroke-width", d => wScale(d.weight));
+    } else {
+      storyStep = Math.min(STORY.length - 1, storyStep + 1);
+      renderStoryStep(storyStep);
+    }
+  });
+
+}).catch(err => {
+  document.body.innerHTML = `<div style="padding:40px;color:#fc8181;font-family:monospace">
+    <h2>Could not load graph.json</h2>
+    <p>Open this file via a local server or place graph.json in the same folder.</p>
+    <p style="margin-top:8px;color:#718096">Run: <code>python -m http.server 8000</code> then open <code>http://localhost:8000/graph.html</code></p>
+    <p style="margin-top:8px;color:#4a5568">Error: ${err}</p>
+  </div>`;
+});
+</script>
+</body>
+</html>

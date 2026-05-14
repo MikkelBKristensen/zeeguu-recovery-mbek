@@ -1,0 +1,677 @@
+{
+  "results": [
+    {
+      "from": "api",
+      "to": "audio-lessons",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "api.endpoints",
+          "core.audio_lessons"
+        ]
+      ]
+    },
+    {
+      "from": "api",
+      "to": "content-pipeline",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "api.endpoints",
+          "core.content_recommender"
+        ],
+        [
+          "api.endpoints",
+          "core.content_retriever"
+        ]
+      ]
+    },
+    {
+      "from": "api",
+      "to": "data-layer",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "api.endpoints",
+          "core.model"
+        ],
+        [
+          "api.utils",
+          "core.model"
+        ]
+      ]
+    },
+    {
+      "from": "api",
+      "to": "language-processing",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "api.endpoints",
+          "core.crowd_translations"
+        ],
+        [
+          "api.endpoints",
+          "core.language"
+        ],
+        [
+          "api.endpoints",
+          "core.llm_services"
+        ],
+        [
+          "api.endpoints",
+          "core.nlp_pipeline"
+        ],
+        [
+          "api.endpoints",
+          "core.tokenization"
+        ],
+        [
+          "api.endpoints",
+          "core.translation_services"
+        ]
+      ]
+    },
+    {
+      "from": "api",
+      "to": "learning-system",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "api.endpoints",
+          "core.behavioral_modeling"
+        ],
+        [
+          "api.endpoints",
+          "core.bookmark_operations"
+        ],
+        [
+          "api.endpoints",
+          "core.bookmark_quality"
+        ],
+        [
+          "api.endpoints",
+          "core.exercises"
+        ],
+        [
+          "api.endpoints",
+          "core.word_scheduling"
+        ]
+      ]
+    },
+    {
+      "from": "api",
+      "to": "operations",
+      "verdict": "ABSENCE",
+      "evidence": []
+    },
+    {
+      "from": "api",
+      "to": "other",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "api.endpoints",
+          "core.util"
+        ],
+        [
+          "api.endpoints",
+          "core.verbal_flashcards"
+        ]
+      ]
+    },
+    {
+      "from": "api",
+      "to": "user-management",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "api.endpoints",
+          "core.account_management"
+        ],
+        [
+          "api.endpoints",
+          "core.emailer"
+        ],
+        [
+          "api.endpoints",
+          "core.friends"
+        ],
+        [
+          "api.endpoints",
+          "core.leaderboards"
+        ],
+        [
+          "api.endpoints",
+          "core.user_activity_hooks"
+        ],
+        [
+          "api.endpoints",
+          "core.user_statistics"
+        ]
+      ]
+    },
+    {
+      "from": "audio-lessons",
+      "to": "data-layer",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.audio_lessons",
+          "core.model"
+        ]
+      ]
+    },
+    {
+      "from": "audio-lessons",
+      "to": "language-processing",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.audio_lessons",
+          "core.llm_services"
+        ]
+      ]
+    },
+    {
+      "from": "audio-lessons",
+      "to": "learning-system",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.audio_lessons",
+          "core.word_scheduling"
+        ]
+      ]
+    },
+    {
+      "from": "audio-lessons",
+      "to": "other",
+      "verdict": "ABSENCE",
+      "evidence": []
+    },
+    {
+      "from": "audio-lessons",
+      "to": "user-management",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.audio_lessons",
+          "core.emailer"
+        ]
+      ]
+    },
+    {
+      "from": "content-pipeline",
+      "to": "data-layer",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.content_cleaning",
+          "core.model"
+        ],
+        [
+          "core.content_quality",
+          "core.model"
+        ],
+        [
+          "core.content_recommender",
+          "core.model"
+        ],
+        [
+          "core.content_retriever",
+          "core.model"
+        ],
+        [
+          "core.elastic",
+          "core.model"
+        ]
+      ]
+    },
+    {
+      "from": "content-pipeline",
+      "to": "language-processing",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.content_quality",
+          "core.ml_models"
+        ],
+        [
+          "core.content_retriever",
+          "core.llm_services"
+        ],
+        [
+          "core.content_retriever",
+          "core.semantic_search"
+        ],
+        [
+          "core.elastic",
+          "core.semantic_vector_api"
+        ]
+      ]
+    },
+    {
+      "from": "content-pipeline",
+      "to": "other",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.content_recommender",
+          "core.util"
+        ],
+        [
+          "core.feed_handler",
+          "core.util"
+        ],
+        [
+          "core.youtube_api",
+          "core.util"
+        ]
+      ]
+    },
+    {
+      "from": "data-layer",
+      "to": "api",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.model",
+          "api.utils"
+        ]
+      ]
+    },
+    {
+      "from": "data-layer",
+      "to": "audio-lessons",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.model",
+          "core.audio_lessons"
+        ]
+      ]
+    },
+    {
+      "from": "data-layer",
+      "to": "content-pipeline",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.model",
+          "core.content_cleaning"
+        ],
+        [
+          "core.model",
+          "core.content_quality"
+        ],
+        [
+          "core.model",
+          "core.content_retriever"
+        ],
+        [
+          "core.model",
+          "core.elastic"
+        ],
+        [
+          "core.model",
+          "core.feed_handler"
+        ],
+        [
+          "core.model",
+          "core.youtube_api"
+        ]
+      ]
+    },
+    {
+      "from": "data-layer",
+      "to": "language-processing",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.model",
+          "core.language"
+        ],
+        [
+          "core.model",
+          "core.llm_services"
+        ],
+        [
+          "core.model",
+          "core.mwe"
+        ],
+        [
+          "core.model",
+          "core.semantic_search"
+        ],
+        [
+          "core.model",
+          "core.tokenization"
+        ]
+      ]
+    },
+    {
+      "from": "data-layer",
+      "to": "learning-system",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.model",
+          "core.behavioral_modeling"
+        ],
+        [
+          "core.model",
+          "core.bookmark_quality"
+        ],
+        [
+          "core.model",
+          "core.word_scheduling"
+        ]
+      ]
+    },
+    {
+      "from": "data-layer",
+      "to": "other",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.model",
+          "core.util"
+        ]
+      ]
+    },
+    {
+      "from": "language-processing",
+      "to": "content-pipeline",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.llm_services",
+          "core.elastic"
+        ],
+        [
+          "core.semantic_search",
+          "core.content_recommender"
+        ],
+        [
+          "core.semantic_search",
+          "core.elastic"
+        ]
+      ]
+    },
+    {
+      "from": "language-processing",
+      "to": "data-layer",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.crowd_translations",
+          "core.model"
+        ],
+        [
+          "core.language",
+          "core.model"
+        ],
+        [
+          "core.llm_services",
+          "core.model"
+        ],
+        [
+          "core.ml_models",
+          "core.model"
+        ],
+        [
+          "core.semantic_search",
+          "core.model"
+        ],
+        [
+          "core.semantic_vector_api",
+          "core.model"
+        ],
+        [
+          "core.tokenization",
+          "core.model"
+        ]
+      ]
+    },
+    {
+      "from": "language-processing",
+      "to": "learning-system",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.llm_services",
+          "core.bookmark_operations"
+        ],
+        [
+          "core.llm_services",
+          "core.word_scheduling"
+        ]
+      ]
+    },
+    {
+      "from": "language-processing",
+      "to": "other",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.language",
+          "core.util"
+        ],
+        [
+          "core.semantic_search",
+          "core.util"
+        ]
+      ]
+    },
+    {
+      "from": "learning-system",
+      "to": "content-pipeline",
+      "verdict": "ABSENCE",
+      "evidence": []
+    },
+    {
+      "from": "learning-system",
+      "to": "data-layer",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.bookmark_operations",
+          "core.model"
+        ],
+        [
+          "core.bookmark_quality",
+          "core.model"
+        ],
+        [
+          "core.reading_analysis",
+          "core.model"
+        ],
+        [
+          "core.word_scheduling",
+          "core.model"
+        ]
+      ]
+    },
+    {
+      "from": "learning-system",
+      "to": "language-processing",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.bookmark_operations",
+          "core.tokenization"
+        ],
+        [
+          "core.word_scheduling",
+          "core.llm_services"
+        ]
+      ]
+    },
+    {
+      "from": "learning-system",
+      "to": "other",
+      "verdict": "ABSENCE",
+      "evidence": []
+    },
+    {
+      "from": "learning-system",
+      "to": "user-management",
+      "verdict": "ABSENCE",
+      "evidence": []
+    },
+    {
+      "from": "operations",
+      "to": "content-pipeline",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "operations.crawler",
+          "core.content_retriever"
+        ]
+      ]
+    },
+    {
+      "from": "operations",
+      "to": "data-layer",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "operations.crawler",
+          "core.model"
+        ],
+        [
+          "operations.report_generator",
+          "core.model"
+        ]
+      ]
+    },
+    {
+      "from": "operations",
+      "to": "language-processing",
+      "verdict": "ABSENCE",
+      "evidence": []
+    },
+    {
+      "from": "operations",
+      "to": "learning-system",
+      "verdict": "ABSENCE",
+      "evidence": []
+    },
+    {
+      "from": "operations",
+      "to": "other",
+      "verdict": "ABSENCE",
+      "evidence": []
+    },
+    {
+      "from": "operations",
+      "to": "user-management",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "operations.crawler",
+          "core.emailer"
+        ]
+      ]
+    },
+    {
+      "from": "other",
+      "to": "data-layer",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.util",
+          "core.model"
+        ],
+        [
+          "core.verbal_flashcards",
+          "core.model"
+        ]
+      ]
+    },
+    {
+      "from": "other",
+      "to": "language-processing",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.util",
+          "core.language"
+        ],
+        [
+          "core.util",
+          "core.tokenization"
+        ]
+      ]
+    },
+    {
+      "from": "other",
+      "to": "learning-system",
+      "verdict": "DIVERGENCE",
+      "evidence": [
+        [
+          "core.verbal_flashcards",
+          "core.word_scheduling"
+        ]
+      ]
+    },
+    {
+      "from": "user-management",
+      "to": "data-layer",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.account_management",
+          "core.model"
+        ],
+        [
+          "core.badges",
+          "core.model"
+        ],
+        [
+          "core.emailer",
+          "core.model"
+        ],
+        [
+          "core.friends",
+          "core.model"
+        ],
+        [
+          "core.leaderboards",
+          "core.model"
+        ],
+        [
+          "core.user_activity_hooks",
+          "core.model"
+        ],
+        [
+          "core.user_statistics",
+          "core.model"
+        ]
+      ]
+    },
+    {
+      "from": "user-management",
+      "to": "learning-system",
+      "verdict": "ABSENCE",
+      "evidence": []
+    },
+    {
+      "from": "user-management",
+      "to": "other",
+      "verdict": "CONVERGENCE",
+      "evidence": [
+        [
+          "core.friends",
+          "core.util"
+        ]
+      ]
+    }
+  ],
+  "summary": {
+    "convergences": 23,
+    "divergences": 11,
+    "absences": 9
+  }
+}
